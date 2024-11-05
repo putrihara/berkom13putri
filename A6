@@ -1,0 +1,47 @@
+#Putri Hari Rahmawati_2306217405
+# Input
+price = float(input("Enter the price of the furniture in Rp:"))
+weight = float(input("Enter the weight of the furniture in kg:"))
+
+# Calculate and display total price
+calculate_total_price(price, weight)
+
+def calculate_total_price(price, weight):
+    # Determine tax rate based on price
+    if price >= 15000000:
+        tax_rate = 0.10
+    elif price >= 10000000:
+        tax_rate = 0.075
+    else:
+        tax_rate = 0.05
+    tax = price * tax_rate
+
+    # Determine shipping cost based on weight
+    if weight >= 30:
+        shipping_cost = 200000
+    elif weight >= 20:
+        shipping_cost = 150000
+    else:
+        shipping_cost = 100000
+
+    # Determine discount rate based on price and weight
+    if price >= 20000000 and weight >= 40:
+        discount_rate = 0.05
+    elif price >= 20000000 or weight >= 40:
+        discount_rate = 0.03
+    else:
+        discount_rate = 0
+    discount = price * discount_rate
+
+    # Calculate total cost
+    total_cost = price + tax + shipping_cost - discount
+
+    # Output
+    print(f"\n=== Price Calculation Summary ===")
+    print(f"Furniture Price: Rp. {price}")
+    print(f"Tax ({tax_rate * 100}%): Rp. {tax}")
+    print(f"Shipping Cost: Rp. {shipping_cost}")
+    print(f"Discount ({discount_rate * 100}%): -Rp. {discount}")
+    print(f"Total Cost: Rp. {total_cost}")
+
+    return total_cost
